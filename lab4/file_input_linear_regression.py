@@ -4,8 +4,8 @@ tf.set_random_seed(777)
 
 xy = np.loadtxt('data-01-test-score.csv', delimiter=',',
 dtype=np.float32)
-x_data = xy[:,0:-1]
-y_data = xy[:, [-1]]
+x_data = xy[:,0:-1] # call n rows , call all elements from index 0, except the last one 
+y_data = xy[:, [-1]] # call n rows, call only the last element
 
 # Make sure the shape and data are OK
 print(x_data.shape, "\n", x_data, len(x_data))
