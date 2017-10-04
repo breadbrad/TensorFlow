@@ -1,14 +1,17 @@
+# Queue Runners 
+# File names -> (shuffle) -> File name queue -> reader -> decoder -> example queue
 import tensorflow as tf
-filename_queue = tf.train.string_input_producter(
-    ['data-01-test-score.csv'], shuffle=False, name='filename_queue')
+filename_queue = tf.train.string_input_producter( 
+    ['data-01-test-score.csv'], # list file names 
+    shuffle=False, name='filename_queue')
 
-reader = tf.TestLineReader()
+reader = tf.TestLineReader() # define reader that reads the files 
 key, value = reader.read(filename_queue)
 
 #Default values, in case of empty columns. Also specifies the type of the 
 # decoded result.
 record_defaults = [[0.], [0.], [0.], [0.]]
-xy = tf.decode_csv(value, record_defaults=record_defaults)
+xy = tf.decode_csv(value, record_defaults=record_defaults) # how to parse value 
 
 # collect batches of csv in 
 train_x_batch, train_y_batch = \
